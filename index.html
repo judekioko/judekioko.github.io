@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jude Kioko — Web Developer, Nairobi</title>
+<meta name="description" content="Jude Kioko — web developer and ICT officer in Kenya. Responsive websites, Django platforms, integrations (M-Pesa, WhatsApp, SMS) and secure deployment.">
+<meta property="og:title" content="Jude Kioko — Web Developer">
+<meta property="og:description" content="Live client websites, Django platforms and integrations, built and deployed end to end.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f7f5f0; --surface:#ffffff; --ink:#1c2420; --muted:#5b665f; --line:#e3e0d7;
+    --accent:#1f5b43; --accent-soft:#e6efe9; --gold:#b8862b;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#121714; --surface:#1a211d; --ink:#eef2ef; --muted:#a3b0a8; --line:#2b3530;
+      --accent:#7cc4a2; --accent-soft:#1f2e27; --gold:#d9ab55; }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent)}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+  nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  nav .brand{font-family:Fraunces,serif;font-weight:600;font-size:19px;color:var(--ink);text-decoration:none}
+  nav .links{display:flex;gap:22px}
+  nav .links a{color:var(--muted);text-decoration:none;font-size:14.5px;font-weight:500}
+  nav .links a:hover{color:var(--ink)}
+  header{padding:84px 0 56px}
+  .eyebrow{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:5px 11px;border-radius:99px}
+  h1{font-family:Fraunces,serif;font-weight:600;font-size:clamp(34px,6vw,56px);line-height:1.08;margin:18px 0 18px;letter-spacing:-.01em;max-width:18ch}
+  .lede{font-size:18.5px;color:var(--muted);max-width:60ch;margin:0 0 28px}
+  .cta{display:flex;flex-wrap:wrap;gap:12px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:10px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--surface)}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  @media (prefers-color-scheme: dark){.btn.primary{color:#0f1a14}}
+  section{padding:56px 0;border-top:1px solid var(--line)}
+  h2{font-family:Fraunces,serif;font-weight:600;font-size:30px;margin:0 0 8px}
+  .sub{color:var(--muted);margin:0 0 30px;max-width:62ch}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column}
+  .card.feature{grid-column:1/-1;border-color:color-mix(in srgb,var(--accent) 35%,var(--line))}
+  .card .kind{font-size:12.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+  .card h3{font-family:Fraunces,serif;font-weight:600;font-size:22px;margin:0 0 8px}
+  .card p{margin:0 0 14px;color:var(--muted)}
+  .card ul{margin:0 0 16px;padding-left:18px;color:var(--muted)}
+  .card ul li{margin:3px 0}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+  .tag{font-size:12.5px;font-weight:500;padding:3px 9px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+  .links-row{margin-top:auto;display:flex;flex-wrap:wrap;gap:16px;font-weight:600;font-size:14.5px}
+  .links-row a{text-decoration:none}
+  .links-row a:hover{text-decoration:underline}
+  .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .skills .card h3{font-size:18px}
+  .about{display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:start}
+  .about p{color:var(--muted);margin:0 0 14px}
+  .facts{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px}
+  .facts dt{font-size:12.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+  .facts dd{margin:2px 0 14px;font-weight:500}
+  .contact{text-align:center;padding:72px 0}
+  .contact p{color:var(--muted);margin:0 auto 24px;max-width:52ch}
+  .contact .cta{justify-content:center}
+  footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-size:14px;text-align:center}
+  @media (max-width:760px){
+    nav .links{display:none}
+    header{padding:56px 0 40px}
+    .grid,.skills,.about{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#">Jude Kioko</a>
+    <div class="links">
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <span class="eyebrow">Web Developer · Nairobi, Kenya</span>
+    <h1>I build websites and platforms that go live and stay up.</h1>
+    <p class="lede">From design to launch and support after launch. I build responsive client websites, Django platforms and integrations (WhatsApp, SMS, M-Pesa), and I run the servers they're hosted on. I work as an ICT Officer by day and do client work alongside it.</p>
+    <div class="cta">
+      <a class="btn primary" href="#work">See my work</a>
+      <a class="btn" href="mailto:mutisojude47@gmail.com">mutisojude47@gmail.com</a>
+      <a class="btn" href="https://github.com/judekioko" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</header>
+
+<section id="work">
+  <div class="wrap">
+    <h2>Selected work</h2>
+    <p class="sub">Live sites first. I built every project below myself, and most of the code is public on GitHub.</p>
+
+    <div class="grid">
+
+      <article class="card feature">
+        <div class="kind">Client platform · Live</div>
+        <h3>AfraViva — corporate site, Media hub &amp; Farms hub</h3>
+        <p>One Django codebase running three live sites for AfricaNext Group, a mission-driven organisation working with youth, families and farmers in East Africa. Staff publish stories, programmes and enquiries themselves, without needing a developer.</p>
+        <ul>
+          <li>Multi-site setup: one project, separate settings and URL routing per site</li>
+          <li>Content hub with articles, programmes and enquiry handling</li>
+          <li>Admin hardening: 2-factor login (TOTP), lockout after failed logins, rate limiting, Content-Security-Policy</li>
+          <li>Automated tests (pytest) and a production deployment I set up and look after</li>
+        </ul>
+        <div class="tags"><span class="tag">Django 5</span><span class="tag">Tailwind CSS</span><span class="tag">MySQL</span><span class="tag">pytest</span><span class="tag">Security hardening</span></div>
+        <div class="links-row">
+          <a href="https://media.afraviva.com/" target="_blank" rel="noopener">media.afraviva.com ↗</a>
+          <a href="https://farms.afraviva.com/" target="_blank" rel="noopener">farms.afraviva.com ↗</a>
+          <a href="https://github.com/judekioko/afraviva-platform" target="_blank" rel="noopener">Code</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="kind">Client website · Live</div>
+        <h3>Afraviva Homes</h3>
+        <p>Marketing site for eight luxury serviced-apartment developments across Nairobi and the Kenyan Coast.</p>
+        <ul>
+          <li>All property pages generated from one data file</li>
+          <li>Google Maps embeds and WhatsApp enquiry buttons</li>
+          <li>Custom SVG logo, sitemap and SEO metadata</li>
+        </ul>
+        <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">SEO</span></div>
+        <div class="links-row">
+          <a href="https://homes.afraviva.com/" target="_blank" rel="noopener">homes.afraviva.com ↗</a>
+          <a href="https://github.com/judekioko/afraviva" target="_blank" rel="noopener">Code</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="kind">Website + API · Live</div>
+        <h3>Safaris Best Choice Kenya</h3>
+        <p>A safari tour website, with a separate Django REST backend that handles user accounts, bookings and contact messages.</p>
+        <ul>
+          <li>Accounts with secure login tokens (JWT); bookings work with or without an account</li>
+          <li>Bookings and messages can only be viewed in the admin, never through the public API</li>
+        </ul>
+        <div class="tags"><span class="tag">Django REST Framework</span><span class="tag">JWT</span><span class="tag">JavaScript</span><span class="tag">GitHub Pages</span></div>
+        <div class="links-row">
+          <a href="https://judekioko.github.io/tourisim-/" target="_blank" rel="noopener">Live site ↗</a>
+          <a href="https://github.com/judekioko/safaris-api" target="_blank" rel="noopener">API code</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="kind">SaaS · Payments</div>
+        <h3>TrustCheck</h3>
+        <p>A fraud-check tool for African SMEs. You paste in a suspicious email, invoice, domain or payment request and get a risk report that explains its reasons.</p>
+        <ul>
+          <li>Checks for lookalike domains, phishing language and changed payment details on invoices</li>
+          <li>M-Pesa Daraja STK Push for subscription billing (built and tested in sandbox)</li>
+        </ul>
+        <div class="tags"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">M-Pesa Daraja</span></div>
+        <div class="links-row"><a href="https://github.com/judekioko/trustcheck" target="_blank" rel="noopener">Code</a></div>
+      </article>
+
+      <article class="card">
+        <div class="kind">Web app</div>
+        <h3>Kiambani School System</h3>
+        <p>School management for a non-technical team: student records, fees and receipts, exams and report cards, and attendance. Admins, teachers, accountants and parents each get their own dashboard.</p>
+        <div class="tags"><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Prisma</span><span class="tag">PostgreSQL</span></div>
+        <div class="links-row"><a href="https://github.com/judekioko/kiambani" target="_blank" rel="noopener">Code</a></div>
+      </article>
+
+      <article class="card">
+        <div class="kind">Public-sector system</div>
+        <h3>NG-CDF Masinga Bursary System</h3>
+        <p>The bursary application portal I built and run as ICT Officer. Members of the public apply online in several steps, and the system catches duplicate applications, organises them by ward and sends SMS and email updates. The code isn't public because it's a government system.</p>
+        <div class="tags"><span class="tag">Django</span><span class="tag">MySQL</span><span class="tag">Africa's Talking SMS</span><span class="tag">Linux / Nginx</span></div>
+      </article>
+
+      <article class="card">
+        <div class="kind">Web app · Live</div>
+        <h3>Masinga Services Finder</h3>
+        <p>A local marketplace where people in Masinga find plumbers, tailors, mechanics and other service providers. Includes browse, registration and profile pages.</p>
+        <div class="tags"><span class="tag">HTML</span><span class="tag">Tailwind CSS</span><span class="tag">JavaScript</span></div>
+        <div class="links-row">
+          <a href="https://judekioko.github.io/reconnect/" target="_blank" rel="noopener">Live site ↗</a>
+          <a href="https://github.com/judekioko/reconnect" target="_blank" rel="noopener">Code</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="kind">SaaS</div>
+        <h3>Reputation Dashboard</h3>
+        <p>One inbox for a business's Google and Facebook reviews. It drafts replies with AI, alerts the owner about low ratings and handles subscription billing.</p>
+        <div class="tags"><span class="tag">Next.js</span><span class="tag">Prisma</span><span class="tag">Stripe</span><span class="tag">Twilio</span></div>
+        <div class="links-row"><a href="https://github.com/judekioko/reputation-dashboard" target="_blank" rel="noopener">Code</a></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>What I work with</h2>
+    <p class="sub">The tools and skills I use most, grouped by area.</p>
+    <div class="skills">
+      <div class="card">
+        <h3>Front end</h3>
+        <p>HTML5, CSS3, JavaScript, responsive and mobile-first layouts, Tailwind CSS, React / Next.js. I build from Figma designs and wireframes, and set up typography and brand styles.</p>
+      </div>
+      <div class="card">
+        <h3>Back end &amp; CMS</h3>
+        <p>Django and Django REST Framework, WordPress, PHP, Node.js, MySQL and PostgreSQL. I build admin panels so clients can update their own content.</p>
+      </div>
+      <div class="card">
+        <h3>Integrations</h3>
+        <p>M-Pesa Daraja (STK Push), WhatsApp, Africa's Talking SMS and email, Google Maps, Stripe, Twilio.</p>
+      </div>
+      <div class="card">
+        <h3>Launch &amp; hosting</h3>
+        <p>Linux (Ubuntu) and Nginx servers, staging and production setups, backups, SSL and DNS, GitHub Pages and Render.</p>
+      </div>
+      <div class="card">
+        <h3>Quality</h3>
+        <p>Technical SEO (sitemaps, metadata), accessibility, page performance, and automated tests.</p>
+      </div>
+      <div class="card">
+        <h3>Security</h3>
+        <p>Cisco Certified Ethical Hacker. Hardened logins, CSP, rate limiting, role-based access and log monitoring.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about">
+    <div>
+      <h2>About</h2>
+      <p>I'm an ICT Officer at Masinga NG-CDF, where I built and run the office's public bursary system and handle the IT: networks, servers, security and staff support.</p>
+      <p>Alongside that, I build websites for clients from start to finish: I take the brief, design the look, build the site, launch it, and stay available after launch. Most of my clients aren't technical, so I explain things in plain language and make sure they can update their own content.</p>
+    </div>
+    <dl class="facts">
+      <dt>Based in</dt><dd>Kenya · available on-site in Nairobi</dd>
+      <dt>Education</dt><dd>B.Com, Business Information Systems — Egerton University</dd>
+      <dt>Certifications</dt><dd>Cisco Certified Ethical Hacker · Cisco NetAcad cybersecurity pathway</dd>
+      <dt>Phone</dt><dd><a href="tel:+254113781366">0113 781 366</a></dd>
+    </dl>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>Let's work together</h2>
+    <p>If you're hiring, or need a website built, the fastest way to reach me is by email or WhatsApp.</p>
+    <div class="cta">
+      <a class="btn primary" href="mailto:mutisojude47@gmail.com">Email me</a>
+      <a class="btn" href="https://wa.me/254113781366" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn" href="https://github.com/judekioko" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Jude Mutiso Kioko</footer>
+
+</body>
+</html>
