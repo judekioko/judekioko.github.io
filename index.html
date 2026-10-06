@@ -102,7 +102,7 @@
 <section id="work">
   <div class="wrap">
     <h2>Selected work</h2>
-    <p class="sub">Live sites first. I built every project below myself. Code for client work is available on request.</p>
+    <p class="sub">Live sites first, then newer products still in development. I built every project below myself. Code for client work is available on request.</p>
 
     <div class="grid">
 
@@ -199,6 +199,59 @@
         <div class="links-row"><a href="https://github.com/judekioko/reputation-dashboard" target="_blank" rel="noopener">Code</a></div>
       </article>
 
+      <article class="card">
+        <div class="kind">SaaS · In development</div>
+        <h3>Hakiki</h3>
+        <p>Accounting for African businesses: invoices, mobile money and bank reconciliation, VAT, stock and payroll in one place, in the business's own currency.</p>
+        <ul>
+          <li>15 country packs, each with its own currency, VAT rates and mobile money providers</li>
+          <li>Double-entry ledger: every document posts its own journal entry</li>
+          <li>Bank and mobile money statement import, matched to invoices automatically</li>
+          <li>Kenyan payroll built in (PAYE, SHIF, NSSF, Housing Levy)</li>
+        </ul>
+        <div class="tags"><span class="tag">Next.js 16</span><span class="tag">Prisma</span><span class="tag">PostgreSQL</span><span class="tag">Tailwind CSS</span></div>
+        <div class="links-row"><a href="https://github.com/judekioko/hakiki" target="_blank" rel="noopener">Code</a></div>
+      </article>
+
+      <article class="card">
+        <div class="kind">Web app · In development</div>
+        <h3>Fuatilia</h3>
+        <p>A case manager for people with a problem with a company, landlord or public office in Kenya. It turns the problem into an organised case and keeps the person moving until there is an outcome.</p>
+        <ul>
+          <li>Step-by-step escalation playbooks (mobile money, telecom, rent deposit), with waiting times and the right regulator at each step</li>
+          <li>Evidence vault with encrypted file storage; M-Pesa messages are read for transaction details</li>
+          <li>Letters drafted for the user to review and send; printable evidence bundle for a regulator or court</li>
+          <li>Privacy controls: consent record, data download, account deletion</li>
+        </ul>
+        <div class="tags"><span class="tag">Django 6</span><span class="tag">PostgreSQL</span><span class="tag">Encryption</span><span class="tag">Content-Security-Policy</span></div>
+        <div class="links-row"><a href="https://github.com/judekioko/fuatilia" target="_blank" rel="noopener">Code</a></div>
+      </article>
+
+      <article class="card">
+        <div class="kind">Game · Prototype</div>
+        <h3>Daily Mystery</h3>
+        <p>One detective case a day, the same for everyone worldwide. Players read the evidence, answer the questions and get a score and a rank to share.</p>
+        <ul>
+          <li>AI case generator: a model writes each case, then two independent solver models must solve it from the evidence alone before a human approves it</li>
+          <li>Solutions stay on the server, so answers can't be read from the browser</li>
+          <li>Fixed, append-only daily schedule; iOS and Android wrappers with Capacitor</li>
+        </ul>
+        <div class="tags"><span class="tag">TypeScript</span><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">Capacitor</span><span class="tag">Claude API</span></div>
+        <div class="links-row"><a href="https://github.com/judekioko/daily-mystery" target="_blank" rel="noopener">Code</a></div>
+      </article>
+
+      <article class="card">
+        <div class="kind">AI experiment</div>
+        <h3>Ahadi</h3>
+        <p>A test tool for a "promises and debts" assistant. Pasted chat messages in Swahili, Sheng or English become proposed ledger entries that a person confirms, and questions are answered from the person's own ledger.</p>
+        <ul>
+          <li>Model output is validated the same way as manual input before it is saved</li>
+          <li>Works without an API key in manual mode; 23 automated self-checks</li>
+        </ul>
+        <div class="tags"><span class="tag">TypeScript</span><span class="tag">Express</span><span class="tag">Anthropic API</span></div>
+        <div class="links-row"><a href="https://github.com/judekioko/ahadi" target="_blank" rel="noopener">Code</a></div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -210,7 +263,7 @@
     <div class="skills">
       <div class="card">
         <h3>Front end</h3>
-        <p>HTML5, CSS3, JavaScript, responsive and mobile-first layouts, Tailwind CSS, React / Next.js. I build from Figma designs and wireframes, and set up typography and brand styles.</p>
+        <p>HTML5, CSS3, JavaScript, TypeScript, responsive and mobile-first layouts, Tailwind CSS, React / Next.js. I build from Figma designs and wireframes, and set up typography and brand styles.</p>
       </div>
       <div class="card">
         <h3>Back end &amp; CMS</h3>
@@ -218,7 +271,7 @@
       </div>
       <div class="card">
         <h3>Integrations</h3>
-        <p>M-Pesa Daraja (STK Push), WhatsApp, Africa's Talking SMS and email, Google Maps, Stripe, Twilio.</p>
+        <p>M-Pesa Daraja (STK Push), WhatsApp, Africa's Talking SMS and email, Google Maps, Stripe, Twilio, and the Claude API for AI features with human review.</p>
       </div>
       <div class="card">
         <h3>Launch &amp; hosting</h3>
