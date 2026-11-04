@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mvule Living – Sample Advertising Page</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f6f1e9; --paper:#fffdf9; --ink:#1f1c18; --muted:#6b6358;
+    --accent:#b8502c; --line:#e6ddcf; --wa:#25D366; --wa-dark:#128C7E;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter,system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.5}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+  /* Top bar */
+  header{position:sticky;top:0;z-index:20;background:rgba(246,241,233,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-family:Fraunces,serif;font-weight:700;font-size:22px;letter-spacing:-.5px}
+  .logo span{color:var(--accent)}
+  .wa-btn{display:inline-flex;align-items:center;gap:8px;background:var(--wa);color:#fff;text-decoration:none;font-weight:600;font-size:14px;padding:10px 16px;border-radius:999px;transition:background .2s}
+  .wa-btn:hover{background:var(--wa-dark)}
+  .wa-btn svg{width:18px;height:18px;fill:#fff}
+
+  /* Hero */
+  .hero{padding:56px 0 36px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+  .eyebrow{display:inline-block;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  h1{font-family:Fraunces,serif;font-size:clamp(34px,5vw,56px);line-height:1.05;letter-spacing:-1.5px;font-weight:700}
+  .hero p{color:var(--muted);font-size:17px;margin:18px 0 26px;max-width:480px}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .hero-cta .wa-btn{font-size:16px;padding:14px 22px}
+  .ghost{font-weight:600;font-size:15px;text-decoration:none;border-bottom:2px solid var(--ink);padding-bottom:2px}
+  .number{font-size:13px;color:var(--muted);margin-top:14px}
+  .hero-art{border-radius:24px;aspect-ratio:4/3.4;position:relative;overflow:hidden;box-shadow:0 20px 50px rgba(31,28,24,.18)}.hero-art img{width:100%;height:100%;object-fit:cover;display:block}
+  .hero-art .tag{position:absolute;left:18px;bottom:18px;background:var(--ink);color:#fff;font-size:13px;padding:8px 12px;border-radius:10px}
+
+  /* Trust strip */
+  .strip{display:flex;flex-wrap:wrap;gap:10px 28px;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:14px;color:var(--muted)}
+  .strip b{color:var(--ink)}
+
+  /* Gallery */
+  .sec-head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:16px;margin:44px 0 20px}
+  h2{font-family:Fraunces,serif;font-size:32px;letter-spacing:-.8px}
+  .sub{color:var(--muted);font-size:15px}
+  .filters{display:flex;flex-wrap:wrap;gap:8px}
+  .filters button{font:inherit;font-size:14px;font-weight:500;border:1px solid var(--line);background:var(--paper);padding:8px 14px;border-radius:999px;cursor:pointer;color:var(--ink)}
+  .filters button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px;padding-bottom:20px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+  .card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(31,28,24,.08)}
+  .thumb{all:unset;cursor:zoom-in;display:block;aspect-ratio:4/3;width:100%}
+  .thumb{overflow:hidden;background:#e9e1d4}.thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}.card:hover .thumb img{transform:scale(1.05)}
+  .info{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;flex:1}
+  .info h3{font-size:16px;font-weight:600}
+  .price{font-family:Fraunces,serif;font-size:18px;color:var(--accent);font-weight:700}
+  .info .wa-btn{margin-top:auto;align-self:flex-start;margin-top:12px;padding:8px 14px;font-size:13px}
+
+  /* How it works */
+  .how{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:40px 0}
+  .step{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px}
+  .step .n{font-family:Fraunces,serif;font-size:28px;color:var(--accent);font-weight:700}
+  .step h4{margin:6px 0 4px;font-size:16px}
+  .step p{color:var(--muted);font-size:14px}
+
+  /* Final CTA */
+  .final{background:linear-gradient(rgba(20,18,15,.72),rgba(20,18,15,.78)),url(images/p3.jpg) center/cover;color:#fff;border-radius:24px;padding:44px 32px;text-align:center;margin:20px 0 40px}
+  .final h2{color:#fff;margin-bottom:10px}
+  .final p{color:#cfc7bb;margin-bottom:22px}
+  .final .wa-btn{font-size:16px;padding:14px 24px}
+  .final .number{color:#a79f93}
+  footer{text-align:center;color:var(--muted);font-size:13px;padding:0 0 90px}
+
+  /* Floating button */
+  .float{position:fixed;right:18px;bottom:18px;z-index:30;width:60px;height:60px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(37,211,102,.45);animation:pulse 2.4s infinite}
+  .float svg{width:32px;height:32px;fill:#fff}
+  @keyframes pulse{0%,100%{box-shadow:0 8px 24px rgba(37,211,102,.45),0 0 0 0 rgba(37,211,102,.5)}50%{box-shadow:0 8px 24px rgba(37,211,102,.45),0 0 0 14px rgba(37,211,102,0)}}
+
+  /* Lightbox */
+  .lb{position:fixed;inset:0;background:rgba(20,18,15,.82);z-index:50;display:none;align-items:center;justify-content:center;padding:20px}
+  .lb.open{display:flex}
+  .lb-box{background:var(--paper);border-radius:22px;max-width:760px;width:100%;overflow:hidden;display:grid;grid-template-columns:1.3fr 1fr}
+  .lb-img{background:#111;min-height:280px}.lb-img img{width:100%;height:100%;object-fit:cover;display:block}
+  .lb-txt{padding:26px;display:flex;flex-direction:column;gap:8px}
+  .lb-txt h3{font-family:Fraunces,serif;font-size:26px;letter-spacing:-.5px}
+  .lb-txt p{color:var(--muted);font-size:14px}
+  .lb-txt .wa-btn{margin-top:auto;justify-content:center}
+  .close{all:unset;cursor:pointer;position:absolute;top:18px;right:22px;color:#fff;font-size:34px;line-height:1}
+
+  @media (max-width:820px){
+    .hero{grid-template-columns:1fr;padding-top:32px}
+    .how{grid-template-columns:1fr}
+    .lb-box{grid-template-columns:1fr}
+    .bar .wa-btn span{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <div class="logo">Mvule<span>.</span>Living</div>
+    <a class="wa-btn wa-link" data-msg="Hello Mvule Living, I'd like to know more about your furniture." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+      <span>Chat on WhatsApp</span>
+    </a>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <span class="eyebrow">Handmade in Nairobi · Delivery countrywide</span>
+      <h1>Luxury living rooms, delivered to your door.</h1>
+      <p>Browse our latest pieces below — free to view, no sign-up. See something you like? Tap the WhatsApp button and talk to us directly.</p>
+      <div class="hero-cta">
+        <a class="wa-btn wa-link" data-msg="Hello Mvule Living, I saw your page and I'm interested. Please share more details." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><use href="#wa-icon"/></svg>Order on WhatsApp
+        </a>
+        <a class="ghost" href="#gallery">View the gallery ↓</a>
+      </div>
+      <div class="number">WhatsApp / Call: <b>0113 781 366</b></div>
+    </div>
+    <div class="hero-art" id="heroArt">
+      <img src="images/p4.jpg" alt="Black velvet Chesterfield sofa set"><div class="tag">New in: Onyx Chesterfield Set</div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div><b>✓</b> Free delivery within Nairobi</div>
+    <div><b>✓</b> Pay on delivery</div>
+    <div><b>✓</b> Custom colours & sizes</div>
+    <div><b>✓</b> Replies within minutes</div>
+  </div>
+
+  <section id="gallery">
+    <div class="sec-head">
+      <div>
+        <h2>Our collection</h2>
+        <div class="sub">Tap any photo to see it bigger.</div>
+      </div>
+      <div class="filters" id="filters"></div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="how">
+    <div class="step"><div class="n">01</div><h4>Browse</h4><p>Look through our photos — it's free and you don't need an account.</p></div>
+    <div class="step"><div class="n">02</div><h4>Tap WhatsApp</h4><p>Every item has a button that opens a chat with us, item name already filled in.</p></div>
+    <div class="step"><div class="n">03</div><h4>Get it delivered</h4><p>Confirm colour, fabric and size with us, and we deliver to your door.</p></div>
+  </section>
+
+  <section class="final">
+    <h2>Seen something you like?</h2>
+    <p>Send us a message for more photos, colours and delivery details — or ask for directions to visit our showroom.</p>
+    <a class="wa-btn wa-link" data-msg="Hello Mvule Living, I'd like to place an order." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><use href="#wa-icon"/></svg>Start WhatsApp chat
+    </a>
+    <div class="number">or call 0113 781 366</div>
+  </section>
+</main>
+
+<footer>© 2026 Mvule Living · Sample advertising page</footer>
+
+<a class="float wa-link" data-msg="Hello Mvule Living, I'm interested in your furniture." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><use href="#wa-icon"/></svg>
+</a>
+
+<div class="lb" id="lb">
+  <button class="close" id="lbClose" aria-label="Close">×</button>
+  <div class="lb-box">
+    <div class="lb-img" id="lbImg"></div>
+    <div class="lb-txt">
+      <span class="eyebrow" id="lbCat"></span>
+      <h3 id="lbName"></h3>
+      <div class="price" id="lbPrice"></div>
+      <p id="lbDesc"></p>
+      <a class="wa-btn" id="lbWa" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><use href="#wa-icon"/></svg>Ask about this on WhatsApp
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- shared WhatsApp icon -->
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="wa-icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></symbol>
+</svg>
+
+<script>
+  // ===== Settings: change the number here =====
+  const WHATSAPP = "254113781366"; // 0113781366 in international format
+
+  const waUrl = msg => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
+  document.querySelectorAll(".wa-link").forEach(a => a.href = waUrl(a.dataset.msg));
+
+  // ===== Products: photo, name, price (edit freely) =====
+  const items = [
+    {img:"p4", name:"Onyx Chesterfield Set", cat:"Sofa sets", price:"KSh 185,000", desc:"Deep-tufted charcoal velvet 3-seater + 2-seater on brushed gold legs. Gold glass coffee table available separately."},
+    {img:"p1", name:"Royal Gold Lounge Collection", cat:"Classic", price:"KSh 420,000", desc:"Hand-carved gilded frames, ivory damask upholstery, marble-top side tables. Full set: sofa, 2 armchairs and 3 tables."},
+    {img:"p2", name:"Silverline U-Sectional", cat:"Sectionals", price:"KSh 365,000", desc:"Modular grey wool-blend sectional with quilted base and two matching ottomans. Seats 8+."},
+    {img:"p6", name:"Saddle Leather Lounge Set", cat:"Sofa sets", price:"KSh 240,000", desc:"Top-grain brown leather 3-seater, 2-seater and storage ottoman."},
+    {img:"p7", name:"Caramel Velvet Sofa", cat:"Sofas", price:"KSh 89,000", desc:"Relaxed retro 3-seater in tan velvet on castors. Loose cushions, easy to clean."},
+    {img:"p9", name:"Oatmeal Modern Sofa", cat:"Sofas", price:"KSh 112,000", desc:"Wide low-profile sofa in oatmeal linen. Pair with our fluted round coffee table (KSh 28,500)."},
+    {img:"p8", name:"Nordic Living Room Package", cat:"Room packages", price:"KSh 210,000", desc:"Cream 3-seater, grey wingback chair, round oak coffee table, rug and pendant light."},
+    {img:"p5", name:"Executive Lobby Package", cat:"Room packages", price:"KSh 330,000", desc:"For offices, hotels and apartment lobbies: 3-seater, 4 lounge chairs, bench and side tables."},
+    {img:"p10", name:"Onyx Chesterfield + Gilded Glass Table", cat:"Sofa sets", price:"KSh 214,000", desc:"The full Onyx look: tufted velvet sofas with our two-tier gold-frame glass coffee table."},
+    {img:"p11", name:"Milano Corner Sofa & Lounge Chair", cat:"Sectionals", price:"KSh 278,000", desc:"Textured taupe corner sofa with leather-wrapped base, plus a sculpted leather lounge chair."},
+    {img:"p13", name:"Sunlit Living Package", cat:"Room packages", price:"KSh 156,000", desc:"Cognac leather 3-seater, olive wingback chair and white coffee table."},
+    {img:"p14", name:"Sunflower Velvet Sofa", cat:"Sofas", price:"KSh 78,500", desc:"Bright mustard velvet 3-seater on slim metal legs. Available in 8 colours."},
+    {img:"p17", name:"Blush Chesterfield Loveseat", cat:"Sofas", price:"KSh 64,000", desc:"Compact 2-seater in soft blush suede, ideal for apartments. Nesting side tables KSh 9,500."},
+    {img:"p18", name:"Mocha Tufted Sofa Bed", cat:"Sofas", price:"KSh 72,000", desc:"Pull-out sofa bed with built-in wooden side shelf. Perfect for guest rooms."},
+    {img:"p19", name:"Cloud Grey L-Shape", cat:"Sectionals", price:"KSh 168,000", desc:"Clean modern L-shape in soft grey weave with deep seats and slim black legs."},
+    {img:"p20", name:"Westlands Classic Living Set", cat:"Classic", price:"KSh 395,000", desc:"Grey 3-seater, tufted loveseat, ottoman, aubergine armchair and walnut TV console."},
+    {img:"p21", name:"Wave Velvet Sofa", cat:"Sofas", price:"KSh 138,000", desc:"Statement curved sofa in ocean-blue velvet with contrast piping. Made to order."},
+    {img:"p12", name:"Ivory Sideboard & Dining Set", cat:"Dining", price:"KSh 186,000", desc:"Ivory and honey-wood sideboard with oval dining table and 6 upholstered chairs."},
+    {img:"p15", name:"Garden Lounge Set", cat:"Outdoor", price:"KSh 148,000", desc:"Weatherproof rattan corner sofa with cushions, pouf and hanging egg chair."},
+    {img:"p16", name:"Patio Rattan Sofa Set", cat:"Outdoor", price:"KSh 112,000", desc:"Rattan 3-seater, armchair and coffee table with mustard outdoor cushions."}
+  ];
+  const pic = it => `<img src="images/${it.img}.jpg" alt="${it.name}" loading="lazy">`;
+
+  // Filters + grid
+  const cats = ["All", ...new Set(items.map(i=>i.cat))];
+  let active = "All";
+  const filters = document.getElementById("filters");
+  const grid = document.getElementById("grid");
+
+  function renderFilters(){
+    filters.innerHTML = cats.map(c=>`<button class="${c===active?'on':''}" data-c="${c}">${c}</button>`).join("");
+  }
+  function renderGrid(){
+    grid.innerHTML = items.map((it,i)=> (active==="All"||it.cat===active) ? `
+      <article class="card">
+        <button class="thumb" data-i="${i}" aria-label="View ${it.name}">${pic(it)}</button>
+        <div class="info">
+          <h3>${it.name}</h3>
+          <div class="price">${it.price}</div>
+          <a class="wa-btn" href="${waUrl(`Hello Mvule Living, I'm interested in the ${it.name} (${it.price}). Is it available?`)}" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><use href="#wa-icon"/></svg>Ask on WhatsApp
+          </a>
+        </div>
+      </article>` : "").join("");
+  }
+  filters.addEventListener("click", e=>{
+    const b = e.target.closest("button"); if(!b) return;
+    active = b.dataset.c; renderFilters(); renderGrid();
+  });
+
+  // Lightbox
+  const lb = document.getElementById("lb");
+  grid.addEventListener("click", e=>{
+    const t = e.target.closest(".thumb"); if(!t) return;
+    const it = items[t.dataset.i];
+    document.getElementById("lbImg").innerHTML = pic(it);
+    document.getElementById("lbCat").textContent = it.cat;
+    document.getElementById("lbName").textContent = it.name;
+    document.getElementById("lbPrice").textContent = it.price;
+    document.getElementById("lbDesc").textContent = it.desc;
+    document.getElementById("lbWa").href = waUrl(`Hello Mvule Living, I'm interested in the ${it.name} (${it.price}). Is it available?`);
+    lb.classList.add("open");
+  });
+  const closeLb = ()=>lb.classList.remove("open");
+  document.getElementById("lbClose").onclick = closeLb;
+  lb.addEventListener("click", e=>{ if(e.target===lb) closeLb(); });
+  document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeLb(); });
+
+  renderFilters(); renderGrid();
+</script>
+</body>
+</html>
